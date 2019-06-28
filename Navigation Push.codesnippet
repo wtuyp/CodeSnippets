@@ -3,24 +3,25 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>mas_remake</string>
+	<string>aypush</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>CodeBlock</string>
+		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>[&lt;#view#&gt; mas_remakeConstraints:^(MASConstraintMaker *make) {
-    &lt;#code#&gt;
-}];</string>
+	<string>&lt;#class#&gt; *vc = [[&lt;#class#&gt; alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>53203A7C-0C2C-493C-9CAE-8900D9AB68A8</string>
+	<string>6B1D01AD-1DEA-4372-BA4F-B48FDF7D70A7</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>navi push vc</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Masonry Constraint Remake</string>
+	<string>push vc</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>

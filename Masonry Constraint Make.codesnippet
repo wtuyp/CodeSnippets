@@ -9,7 +9,7 @@
 		<string>CodeBlock</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>[&lt;#view#&gt; mas_makeConstraints:^(MASConstraintMaker *make){
+	<string>[&lt;#view#&gt; mas_makeConstraints:^(MASConstraintMaker *make) {
     &lt;#code#&gt;
 }];
 </string>
