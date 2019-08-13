@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>ayrequestfresh</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (void)request&lt;#mothod name#&gt;WithRefresh:(BOOL)refresh {
+&lt;#request class#&gt; *request = [[&lt;#request class#&gt; alloc] initWithPage:refresh ? @"1" : _listData.pageString];
+    [request requestBySuccess:^(NSURLSessionDataTask * _Nonnull task, FCNetResponse *_Nonnull responseObj) {
+        if (responseObj.status == 200) {
+            if (refresh) {
+                [_listData removeAllItems];
+            }
+            [_listData addItems:responseObj.content[@"data"]];
+            [_listView reloadData];
+        } else {
+            [self showHUDInfo:responseObj.msg];
+        }
+    } failure:^(NSString * _Nonnull msg, NSError * _Nonnull error) {
+        [self showHUDInfo:msg];
+    }];
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>8D2C69B3-7668-46D3-B280-74B650D606FD</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>request with refresh status</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Request With Refresh</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

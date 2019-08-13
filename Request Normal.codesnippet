@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>ayrequest</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (void)request&lt;#mothod name#&gt; {
+&lt;#request class#&gt; *request = [[&lt;#request class#&gt; alloc] init];
+[request requestBySuccess:^(NSURLSessionDataTask * _Nonnull task, FCNetResponse *_Nonnull responseObj) {
+    if (responseObj.status == 200) {
+        _listData = responseObj.content[@"data"]];
+        [_listView reloadData];
+    } else {
+        [self showHUDInfo:responseObj.msg];
+    }
+} failure:^(NSString * _Nonnull msg, NSError * _Nonnull error) {
+    [self showHUDInfo:msg];
+}];
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>5B31247E-E915-4FF2-ACCF-97A59073E8E1</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Request normal</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Request Normal</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

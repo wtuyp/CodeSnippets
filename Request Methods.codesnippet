@@ -3,23 +3,34 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>ayMark</string>
+	<string>ayrequestmethod</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>ClassInterfaceMethods</string>
-		<string>TopLevel</string>
-		<string>ClassImplementation</string>
+		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>#pragma mark - &lt;#Section#&gt;</string>
+	<string>- (NSString *)requestUrl {
+    return @"";
+}
+
+- (id)requestArgument {
+    return @{};
+}
+
+- (FCRequestMethodType)requestMothod {
+    return FCRequestMethodPOST;
+}
+
+//- (NSDictionary *)headerField {}
+//- (NSDictionary *)queryField {}</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>A8BF4770-FDF3-4DBE-804A-A2ED30CDC44A</string>
+	<string>A48E3D12-6822-4D8E-B811-75D0A57E80B9</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Dividers and labels to organize your code into sections</string>
+	<string>Request Methods</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>pragma mark</string>
+	<string>Request Methods</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
