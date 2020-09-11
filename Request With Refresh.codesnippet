@@ -3,34 +3,74 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>ayrequestfresh</string>
+	<string>ayRequestFresh</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>- (void)request&lt;#mothod name#&gt;WithRefresh:(BOOL)refresh {
-&lt;#request class#&gt; *request = [[&lt;#request class#&gt; alloc] initWithPage:refresh ? @"1" : _listData.pageString];
-    [request requestBySuccess:^(NSURLSessionDataTask * _Nonnull task, FCNetResponse *_Nonnull responseObj) {
-        if (responseObj.status == 200) {
+	<string>- (void)request&lt;#name#&gt;DataWithRefresh:(BOOL)refresh {    
+    &lt;#ApiRequest#&gt; *request = [[&lt;#ApiRequest#&gt; alloc] initWithResponseBlock:^(BOOL isSuccess, NetworkRequest * _Nullable request, NetworkResponse * _Nullable response) {
+        [self.tableView endRefresh];
+        if (isSuccess) {
+            &lt;#ApiResponse#&gt; *responseData = (&lt;#ApiResponse#&gt; *)response;
             if (refresh) {
-                [_listData removeAllItems];
+                [self.tableView.refreshDataArray removeAllObjects];
             }
-            [_listData addItems:responseObj.content[@"data"]];
-            [_listView reloadData];
-        } else {
-            [self showHUDInfo:responseObj.msg];
+            [self.tableView.refreshDataArray addObjectsFromArray:responseData.items];
+            if (self.tableView.refreshDataArray.count == 0) {
+                self.view.nothingView = self.createNothingView;
+            } else {
+                [self.view hideNothingVivew];
+            }
+            
+            if (responseData.count &gt; self.tableView.refreshDataArray.count) {
+                self.tableView.tableFooterView = nil;
+                self.tableView.mj_footer = self.refreshFooter;
+            } else {
+                self.tableView.tableFooterView = self.noMoreFooter;
+                [self.tableView invalidFooterRefresh];
+            }
+                        
+            [self.tableView reloadData];
         }
-    } failure:^(NSString * _Nonnull msg, NSError * _Nonnull error) {
-        [self showHUDInfo:msg];
     }];
+    request.showLoading().showError();
+    request.districtId = self.districtId;
+    request.lastId = 0;
+    if (!refresh) {
+        &lt;#model#&gt; *model = self.tableView.refreshDataArray.lastObject;
+        request.lastId = model.id;
+    }
+    request.pageSize = 10;
+    [self asynStartRequest:request visableView:self.view];
+}
+
+- (MJRefreshAutoNormalFooter *)refreshFooter {
+    if (!_refreshFooter) {
+        @weakify(self)
+        _refreshFooter = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            @strongify(self)
+            [self request&lt;#name#&gt;DataWithRefresh:NO];
+        }];
+    }
+    return _refreshFooter;
+}
+
+- (OrderTableFooterView *)noMoreFooter {
+    if (!_noMoreFooter) {
+        _noMoreFooter = [[OrderTableFooterView alloc] initWithTitle:@"别拉了，已经到底了"];
+    }
+    return _noMoreFooter;
 }</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>8D2C69B3-7668-46D3-B280-74B650D606FD</string>
+	<string>E2EFE06B-BBCF-4A18-B96E-06643BEE4B50</string>
 	<key>IDECodeSnippetLanguage</key>
-	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>request with refresh status</string>
+	<string></string>
 	<key>IDECodeSnippetTitle</key>
 	<string>Request With Refresh</string>
 	<key>IDECodeSnippetUserSnippet</key>

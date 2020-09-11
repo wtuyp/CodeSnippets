@@ -3,36 +3,36 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>ayrequest</string>
+	<string>ayRequestNormal</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>- (void)request&lt;#mothod name#&gt; {
-&lt;#request class#&gt; *request = [[&lt;#request class#&gt; alloc] init];
-[request requestBySuccess:^(NSURLSessionDataTask * _Nonnull task, FCNetResponse *_Nonnull responseObj) {
-    if (responseObj.status == 200) {
-        _listData = responseObj.content[@"data"]];
-        [_listView reloadData];
-    } else {
-        [self showHUDInfo:responseObj.msg];
-    }
-} failure:^(NSString * _Nonnull msg, NSError * _Nonnull error) {
-    [self showHUDInfo:msg];
-}];
+	<string>- (void)request&lt;#name#&gt;Data {
+    &lt;#ApiRequest#&gt; *request = [[&lt;#ApiRequest#&gt; alloc] initWithResponseBlock:^(BOOL isSuccess, NetworkRequest * _Nullable request, NetworkResponse * _Nullable response) {
+        if (isSuccess) {
+            &lt;#ApiResponse#&gt; *reponseData = (&lt;#ApiResponse#&gt; *)response;
+
+        }
+    }];
+    request.showLoading().showError();
+
+    [self asynStartRequest:request visableView:self.view];
 }</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>5B31247E-E915-4FF2-ACCF-97A59073E8E1</string>
+	<string>465DB489-823B-4230-A6CE-A6037714B49C</string>
 	<key>IDECodeSnippetLanguage</key>
-	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Request normal</string>
+	<string></string>
 	<key>IDECodeSnippetTitle</key>
 	<string>Request Normal</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>
