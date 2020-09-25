@@ -36,7 +36,6 @@
         }
     }];
     request.showLoading().showError();
-    request.districtId = self.districtId;
     request.lastId = 0;
     if (!refresh) {
         &lt;#model#&gt; *model = self.tableView.refreshDataArray.lastObject;
@@ -46,12 +45,15 @@
     [self asynStartRequest:request visableView:self.view];
 }
 
+@property (nonatomic, strong) MJRefreshAutoNormalFooter *refreshFooter;
+@property (nonatomic, strong) OrderTableFooterView *noMoreFooter;
+
 - (MJRefreshAutoNormalFooter *)refreshFooter {
     if (!_refreshFooter) {
         @weakify(self)
         _refreshFooter = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             @strongify(self)
-            [self request&lt;#name#&gt;DataWithRefresh:NO];
+            [self &lt;#requestDataWithRefresh#&gt;:NO];
         }];
     }
     return _refreshFooter;
