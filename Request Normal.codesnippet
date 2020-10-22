@@ -12,7 +12,7 @@
 	<string>- (void)request&lt;#name#&gt;Data {
     &lt;#ApiRequest#&gt; *request = [[&lt;#ApiRequest#&gt; alloc] initWithResponseBlock:^(BOOL isSuccess, NetworkRequest * _Nullable request, NetworkResponse * _Nullable response) {
         if (isSuccess) {
-            &lt;#ApiResponse#&gt; *reponseData = (&lt;#ApiResponse#&gt; *)response;
+            &lt;#ApiResponse#&gt; *responseData = (&lt;#ApiResponse#&gt; *)response;
 
         }
     }];
@@ -33,6 +33,6 @@
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>0</integer>
+	<integer>2</integer>
 </dict>
 </plist>
